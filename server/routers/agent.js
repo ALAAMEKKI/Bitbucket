@@ -36,7 +36,7 @@ router.post("/agent", async (req, res) => {
 router.get("/agents", async (req, res) => {
   try {
     await Agent.find({}).then((agents) => {
-      res.json(agents);
+      res.json({ results: agents });
     });
   } catch (e) {
     console.log(e);

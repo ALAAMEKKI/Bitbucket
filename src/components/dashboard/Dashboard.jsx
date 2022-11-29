@@ -1,18 +1,39 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import style from './style.module.css'
 
 import { data as DATA } from "../../data"
 
 import { Card } from 'react-bootstrap';
 
+
+import API from "../../utils/Api"
+
+
+
 const Dashboard = () => {
 
 
     const [agents, setAgents] = useState([])
 
+    const getAgents = async () => {
+        try {
+            const allAgents = await API.agents.get()
+            console.log("agents", allAgents.data.results)
+            setAgents(allAgents.data.results)
+        }
+        catch (e) {
+            console.log(e);
+        }
+    }
 
 
-    let res = DATA.results
+    useEffect(() => {
+        getAgents()
+    }, [])
+
+
+
+    let res = agents
 
     //remove id 000 agent 
     let filteredData = res.filter(item =>
