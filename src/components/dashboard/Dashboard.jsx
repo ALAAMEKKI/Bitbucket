@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import style from './style.module.css'
 
 import { data as DATA } from "../../data"
@@ -6,6 +6,12 @@ import { data as DATA } from "../../data"
 import { Card } from 'react-bootstrap';
 
 const Dashboard = () => {
+
+
+    const [agents, setAgents] = useState([])
+
+
+
     let res = DATA.results
 
     //remove id 000 agent 
