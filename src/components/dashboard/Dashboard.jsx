@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import style from './style.module.css'
 
-import { data as DATA } from "../../data"
-
 import { Card } from 'react-bootstrap';
 
 
@@ -18,7 +16,6 @@ const Dashboard = () => {
     const getAgents = async () => {
         try {
             const allAgents = await API.agents.get()
-            console.log("agents", allAgents.data.results)
             setAgents(allAgents.data.results)
         }
         catch (e) {

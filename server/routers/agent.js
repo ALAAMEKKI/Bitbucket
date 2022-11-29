@@ -44,7 +44,7 @@ router.get("/agents", async (req, res) => {
   }
 });
 
-//Router to update Agent
+//Router to update Agent by name
 router.put("/:name", async (req, res) => {
   let name = req.params.name;
   try {
@@ -52,7 +52,7 @@ router.put("/:name", async (req, res) => {
     Object.assign(agent, req.body);
     agent.save();
     if (agent) {
-      res.send({ message: "udated succefully", agent });
+      res.send({ message: "udated successfully", agent });
     } else {
       res.status(404).send({ error: "Agent not found" });
     }
@@ -62,7 +62,7 @@ router.put("/:name", async (req, res) => {
   }
 });
 
-//Router to delete Agent
+//Router to delete Agent by id
 router.delete("/:id", async (req, res) => {
   let id = req.params.id;
   try {
